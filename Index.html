@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Angularjs Demo</title>
+    <script src="angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module("app", []);
+        var employeecontroller = function ($scope)
+        {
+            $scope.FirstName="Shashikant Pandit"
+        }
+        app.controller("employeecontroller", employeecontroller);
+    </script>
+</head>
+<body>
+    <!--initializing angularjs app-->
+    <div ng-app="app"> 
+        <!--initializing controller-->
+        <div ng-controller="employeecontroller">
+            <input type="text" ng-model="FirstName" />
+            <span ng-bind="FirstName"></span>
+        </div>
+    </div>
+</body>
+</html>
