@@ -1,0 +1,75 @@
+<html>
+<head>
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script type="text/javascript">
+        var myapp = angular.module("routemodule", ["ngRoute"]);
+        myapp.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    template: 'Welcome to filter example'
+                })
+                .when('/currency', {
+                    templateUrl: 'filters/currency.html'
+                })
+                .when('/date', {
+                    templateUrl: 'filters/date.html'
+                })
+                .when('/filter', {
+                    templateUrl: 'filters/filter.html'
+                })
+                .when('/json', {
+                    templateUrl: 'filters/json.html'
+                })
+                .when('/limitto', {
+                    templateUrl: 'filters/limitto.html'
+                })
+                .when('/lowercase', {
+                    templateUrl: 'filters/lowercase.html'
+                })
+                .when('/number', {
+                    templateUrl: 'filters/number.html'
+                })
+                .when('/orderby', {
+                    templateUrl: 'filters/orderby.html'
+                })
+                .when('/uppercase', {
+                    templateUrl: 'filters/uppercase.html'
+                })
+                .otherwise({ template: 'no page found!' })
+        })
+    </script>
+    <style type="text/css">
+        ul#filterlist {
+           list-style:none;
+           background-color:#ccc;
+           height:50px;
+           text-align:center;
+           padding:0px;
+           border-radius:5px;
+        }
+        ul#filterlist > li {
+            display:inline;
+            margin-left:10px;
+        }
+        ul#filterlist > li>a {
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body ng-app="routemodule">
+    <h3 style="margin: auto; width: 100%; text-align: center;">Welcome to filter example:-</h3>
+    <ul id="filterlist">
+        <li> <a href="#!/currency">Currency</a></li>
+        <li> <a href="#!/date">Date</a></li>
+        <li> <a href="#!/filter">Filter</a></li>
+        <li> <a href="#!/json">JSON</a></li>
+        <li> <a href="#!/limitto">Limit To</a></li>
+        <li> <a href="#!/lowercase">Lower Case</a></li>
+        <li> <a href="#!/number">Number</a></li>
+        <li> <a href="#!/orderby">Oerder By</a></li>
+        <li> <a href="#!/uppercase">Upper Case</a></li>
+    </ul>
+    <div ng-view></div>
+</body>
+</html>
