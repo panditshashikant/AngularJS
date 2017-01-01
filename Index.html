@@ -1,24 +1,64 @@
 <html>
 <head>
-    <title>Angularjs Demo</title>
-    <script src="angular.min.js"></script>
-    <script type="text/javascript">
-        var app = angular.module("app", []);
-        var employeecontroller = function ($scope)
-        {
-            $scope.FirstName="Shashikant Pandit"
-        }
-        app.controller("employeecontroller", employeecontroller);
-    </script>
+<script src="angular.js"></script>
+    <script src="ishir-app.js"></script>
+    <script src="controller1.js"></script>
+    <script src="employeeRegistrationController.js"></script>
+    <script src="filterController.js"></script>
+    <script src="directive1.js"></script>
 </head>
-<body>
-    <!--initializing angularjs app-->
-    <div ng-app="app"> 
-        <!--initializing controller-->
-        <div ng-controller="employeecontroller">
-            <input type="text" ng-model="FirstName" />
-            <span ng-bind="FirstName"></span>
+<body ng-app="ishirapp">
+    1.<h4>$rootScope example is here:</h4>
+    <span>Developer worked on it:-{{developer}}</span> 
+    <br />
+    <div ng-controller="controller1">
+        {{firstName +"-"+lastName}}
+        <div my-directive></div>
+        2.<h3>Example of inti directive</h3>
+        <input type="text" ng-model="firstName"/>
+        <div ng-init="employee={firstName:'Shashikant',lastName:'Pandit',age:'30'}">
+            {{controllerName}} {{employee.firstName+"-"+employee.lastName+"-"+employee.age}}
         </div>
+        <div>
+            <div style="margin:auto;"></div>
+            <div>
+                Rupee:<input type="number" ng-model="rupee" />
+                Quantity:<input type="number" ng-model="quantity" />
+                <br />
+                Result:{{rupee*quantity}}
+            </div>
+        </div>
+        <div ng-init="name=['John','Michel','David']">
+            <ul style="margin:0px;">
+                <li ng-repeat="x in name">{{x}}</li>
+            </ul>
+        </div>
+    </div>
+    3.<h3>Example for form validation:</h3>
+    <div ng-controller="employeeRegistrationController" style="background-color:#ccc;border-radius:5px;">
+        <form ng-submit="saveEmployee(employeeRegistrationForm)" name="employeeRegistrationForm">
+            <div>
+                <span> First Name:</span>
+                <input type="email" name="firstName" ng-model="employee.firstName" />
+                <span ng-show="!employeeRegistrationForm.firstName.$valid">Invalid email.</span>
+            </div>
+            <div>
+                <span> Last Name:</span>
+                <input type="text" name="lastName" ng-model="employee.lastName" />
+            </div>
+            <div>
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+    <div ng-controller="filterController">
+        4.<h3>Filters example:</h3>
+        <span>{{uppercase|uppercase}} example.</span>
+        <ul>
+            <li ng-repeat="x in names | filter: 'i' ">
+                {{x}}
+            </li>
+        </ul>
     </div>
 </body>
 </html>

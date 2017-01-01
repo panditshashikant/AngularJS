@@ -1,0 +1,22 @@
+<html>
+<head>
+    <script src="angular.js"></script>
+    <script src="angular-route.js"></script>
+    <script type="text/javascript">
+        var myapp = angular.module("routemodule", ["ngRoute"]);
+        myapp.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'home.html'
+                })
+                .when('/about', {
+                    templateUrl: 'about.html'
+                })
+                .otherwise({ template: 'no page found!' })
+        })
+    </script>
+</head>
+<body ng-app="routemodule">
+    <div ng-view></div>
+</body>
+</html>
