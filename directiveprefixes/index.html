@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../angular.min.js"></script>
+    <script src="module.js"></script>
+    <script src="parentcontroller.js"></script>
+    <script src="directive.js"></script>
+</head>
+<body ng-app="directiveApp">
+    <div ng-controller="parentController">
+        <div>
+            Here it is parent controller
+            <input type="text" ng-model="parentName" />
+        </div>
+        <div>
+            <p><b>Directive</b></p>
+            <my-directive text-binding="{{parentName}}"
+                          two-way-binding="parentName"
+                          one-way-binding="oneway({ id: 1 })"></my-directive>
+        </div>
+        <div style="background-color:#ccc;">
+            <div>
+                Parent customer scope
+                <input type="text" ng-model="name" />
+            </div>
+            <p>Isoloated scope in directive</p>
+            <my-customer></my-customer>
+        </div>
+
+    </div>
+    <blockquote style="background-color:#ccc;">
+        <pre>
+    
+    In the page we will be discussing about the directive scope only...
+    scope can be like:-
+        1. scope:true
+        2. scope:false
+        3. scope:{}
+        <h3> Example:-</h3>
+        return {
+            restrict:'EA',
+            scope: true,'
+            template: "<input type='text' ng-model='name'> Name: {{name}} Address: {{address}}"
+                };
+        here in this example i have used scope :true
+        <h3>scope:true  means</h3>
+        if you use true it looks from the directive scope itself not from parents. But, any changes maid in paren
+        with the same property will reflect to the directive(child) also.
+        <h3>scope:false  means</h3>
+        if you use false it looks from the directive scope as well as parent.
+        if property changes in child or in parents it reflects in both scope (parent and child).
+        Means:- if you change in directive(child) it changes into parents and vice versa.
+        <h3>scope:{}  means</h3>
+        It does not look for parents properties it looks for only it's directive scope.
+    </pre>
+
+    </blockquote>
+    </body>
+</html>
